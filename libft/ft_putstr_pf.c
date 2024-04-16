@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putstr_pf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: amouhand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 22:57:46 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/15 22:59:21 by amouhand         ###   ########.fr       */
+/*   Created: 2023/11/27 21:08:14 by amouhand          #+#    #+#             */
+/*   Updated: 2024/03/18 05:39:20 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <signal.h>
-# include <unistd.h>
-# include "../libft/libft.h"
+int	ft_putstr_pf(const char *s)
+{
+	int	i;
 
-#endif
+	if (!s)
+		return (ft_putstr_pf("(null)"));
+	i = 0;
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	return (i);
+}

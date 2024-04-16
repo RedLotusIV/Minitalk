@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putunsigned_pf.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: amouhand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 22:57:46 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/15 22:59:21 by amouhand         ###   ########.fr       */
+/*   Created: 2023/11/28 22:24:45 by amouhand          #+#    #+#             */
+/*   Updated: 2024/03/18 05:39:35 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <signal.h>
-# include <unistd.h>
-# include "../libft/libft.h"
-
-#endif
+int	ft_putunsigned_pf(unsigned int n, int *len)
+{
+	if (n >= 10)
+	{
+		ft_putunsigned_pf(n / 10, len);
+		ft_putunsigned_pf(n % 10, len);
+	}
+	else
+	{
+		(*len) += ft_putchar_pf((n + '0'));
+	}
+	return (*len);
+}
