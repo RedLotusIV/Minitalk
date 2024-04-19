@@ -6,7 +6,7 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:59:58 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/16 21:12:45 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/19 19:35:27 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void handler(int signal)
 	bits++;
 	if (bits == 8)
 	{
-		ft_printf("%c", i);
+		write(1, &i, 1);
 		bits = 0;
 		i = 0;
 	}
@@ -53,8 +53,6 @@ int main(int ac, char *av[])
 	{
 		signal(SIGUSR1, handler);
 		signal(SIGUSR2, handler);
-		// pause function pauses till a signal arrives
-		pause();
 	}
 	return (0);
 }
