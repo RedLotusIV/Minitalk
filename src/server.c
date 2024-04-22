@@ -6,18 +6,19 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:59:58 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/19 19:35:27 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/22 04:06:25 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
-void handler(int signal)
+
+void	handler(int signal)
 {
-	static int bits;
-	static int i;
+	static int	bits;
+	static int	i;
 
 	if (signal == SIGUSR1)
-		i = i | (0x01 << bits);
+		i |= (1 << bits);
 	bits++;
 	if (bits == 8)
 	{
@@ -25,21 +26,12 @@ void handler(int signal)
 		bits = 0;
 		i = 0;
 	}
-	// SIGUSR1, i = 00000000 | 00000001 = 00000001, bits = 0
-	// SIGUSR1, i = 00000001 | 00000010 = 00000011, bits = 1
-	// SIGUSR2, i = 00000011, bits = 2
-	// SIGUSR2, i = 00000011, bits = 3
-	// SIGUSR2, i = 00000011, bits = 4
-	// SIGUSR1, i = 00000011 | 00100000 = 00100011, bits = 5
-	// SIGUSR1, i = 00100011 | 01000000 = 01100011, bits = 6
-	// SIGUSR2, i = 01100011, bits = 7
-	// bits++;
-	// then print the i as character from the built binary, reset the static then continue
 }
-int main(int ac, char *av[])
+
+int	main(int ac, char *av[])
 {
-	int pid;
-	
+	int	pid;
+
 	(void)av;
 	if (ac != 1)
 	{

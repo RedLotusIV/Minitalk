@@ -6,15 +6,15 @@
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:59:28 by amouhand          #+#    #+#             */
-/*   Updated: 2024/04/19 19:30:23 by amouhand         ###   ########.fr       */
+/*   Updated: 2024/04/22 04:07:02 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
-void sendbits(int pid, char c)
+void	sendbits(int pid, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 8)
@@ -26,25 +26,12 @@ void sendbits(int pid, char c)
 		usleep(100);
 		i++;
 	}
-	// 'c' = 01100011 | 1 = 00000001
-	
-	// 'c' = 00000001 = 1, SIGUSR1
-	// 'c' = 00000010 = 1, SIGUSR1
-	// 'c' = 00000000 = 0, SIGUSR2
-	// 'c' = 00000000 = 0, SIGUSR2
-	// 'c' = 00000000 = 0, SIGUSR2
-	// 'c' = 00100000 = 1, SIGUSR1
-	// 'c' = 01000000 = 1, SIGUSR1
-	// 'c' = 00000000 = 0, SIGUSR2
-
-	// sleep 100 microseconds to give enough time to send the signal
-	// kill is a function that sends a signal to a pid you give
 }
 
-int main(int ac, char *av[])
+int	main(int ac, char *av[])
 {
-	int pid;
-	int i;
+	int	pid;
+	int	i;
 
 	if (ac != 3)
 	{
