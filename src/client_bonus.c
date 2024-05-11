@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 22:59:28 by amouhand          #+#    #+#             */
-/*   Updated: 2024/05/11 19:16:33 by amouhand         ###   ########.fr       */
+/*   Created: 2024/04/22 20:06:35 by amouhand          #+#    #+#             */
+/*   Updated: 2024/05/11 19:18:42 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "../includes/minitalk_bonus.h"
+
+static void	confirming(int sig)
+{
+	if (sig == SIGUSR1)
+		ft_printf("Signal succesfully received by the server.\n");
+	else
+		ft_printf("Signal succesfully received by the server.\n");
+	exit(0);
+}
 
 void	sendbits(int pid, char c)
 {
@@ -42,6 +51,8 @@ int	main(int ac, char *av[])
 		while (av[2][i])
 		{
 			sendbits(pid, av[2][i]);
+			signal(SIGUSR1, confirming);
+			signal(SIGUSR2, confirming);
 			i++;
 		}
 		sendbits(pid, '\0');

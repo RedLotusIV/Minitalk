@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amouhand <amouhand@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 22:59:58 by amouhand          #+#    #+#             */
-/*   Updated: 2024/05/08 18:51:49 by amouhand         ###   ########.fr       */
+/*   Created: 2024/04/22 23:33:35 by amouhand          #+#    #+#             */
+/*   Updated: 2024/05/09 01:25:25 by amouhand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "../includes/minitalk_bonus.h"
 
 void	handler(int signal, siginfo_t *info, void *context)
 {
@@ -30,6 +30,8 @@ void	handler(int signal, siginfo_t *info, void *context)
 	bits++;
 	if (bits == 8)
 	{
+		if (!i)
+			kill(info->si_pid, SIGUSR1);
 		write(1, &i, 1);
 		bits = 0;
 		i = 0;
