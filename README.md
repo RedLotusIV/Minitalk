@@ -1,5 +1,5 @@
 # Minitalk
-### client sending to server by translating each character to a bit then to a singal (example):
+### client sending to server by translating each character to a bit then to a signal (example):
 'c' = 01100011 | 1 = 00000001
 'c' = 00000001 = 1, SIGUSR1
 'c' = 00000010 = 1, SIGUSR1
